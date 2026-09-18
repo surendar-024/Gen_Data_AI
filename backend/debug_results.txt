@@ -1,0 +1,19 @@
+
+--- TEST: Give me 100 students with scholarship multiple of 2500 and lower than the fees ---
+Domain Extracted: student
+Raw Columns Extracted: ['scholarship multiple of 2500 and lower than the fees']
+Final Schema Columns: ['scholarship', 'fees']
+  - Col scholarship constraints: {'min': 0, 'max': 500000, 'multiple_of': 2500, 'dynamic_max': 'fees'}
+  - Col fees constraints: {'min': 5000, 'max': 500000}
+
+--- TEST: Generate 50 students with scholarship greater than 1000 and lower than 50000 ---
+Domain Extracted: student
+Raw Columns Extracted: ['scholarship greater than 1000 and lower than 50000']
+Final Schema Columns: ['scholarship']
+  - Col scholarship constraints: {'min': 1000, 'max': 50000}
+
+--- TEST: fees greater than 50000 and lower than 100000 ---
+Domain Extracted: student
+Raw Columns Extracted: ['fees greater than 50000 and lower than 100000']
+Final Schema Columns: ['fees']
+  - Col fees constraints: {'min': 50000, 'max': 100000}

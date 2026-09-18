@@ -1,0 +1,101 @@
+[
+  {
+    "prompt": "50 records with roll_number formatted like 2024-ST-###, enrollment_year is 2023, study year is 2, and email ends with @university.edu",
+    "schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 50,
+      "columns": [
+        {
+          "name": "roll_number",
+          "type": "pattern",
+          "unique": true,
+          "pattern": "R001",
+          "aliases": [
+            "roll",
+            "rollnumber",
+            "roll_number",
+            "rollno",
+            "roll_no",
+            "roll number"
+          ],
+          "output_name": "roll_number",
+          "pattern_sample": "2024-ST-###"
+        },
+        {
+          "name": "enrollment_year",
+          "type": "integer",
+          "min": 2023,
+          "max": 2023,
+          "aliases": [
+            "enrollmentyear",
+            "enrollment_year",
+            "admissionyear",
+            "admission_year",
+            "joiningyear",
+            "joining_year",
+            "yearofadmission",
+            "year_of_admission",
+            "year",
+            "enrollment year",
+            "admission year"
+          ],
+          "output_name": "enrollment_year"
+        },
+        {
+          "name": "academic_year",
+          "type": "integer",
+          "min": 2,
+          "max": 2,
+          "aliases": [
+            "academicyear",
+            "academic_year",
+            "studyyear",
+            "study_year",
+            "year_of_study",
+            "academic year",
+            "study year"
+          ],
+          "output_name": "study year"
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "unique": true,
+          "aliases": [
+            "email",
+            "mail",
+            "emailid",
+            "email_id",
+            "emailaddress"
+          ],
+          "output_name": "email",
+          "suffix": "@university.edu"
+        }
+      ],
+      "column_suggestions": [
+        {
+          "input": "roll_number",
+          "suggested": "roll_number",
+          "confidence": "high"
+        },
+        {
+          "input": "enrollment_year",
+          "suggested": "enrollment_year",
+          "confidence": "high"
+        },
+        {
+          "input": "study year",
+          "suggested": "academic_year",
+          "confidence": "high"
+        },
+        {
+          "input": "email",
+          "suggested": "email",
+          "confidence": "high"
+        }
+      ]
+    }
+  }
+]

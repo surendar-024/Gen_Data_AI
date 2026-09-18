@@ -1,0 +1,530 @@
+[
+  {
+    "prompt": "Generate 100 students with id in the STU-001 format and name.",
+    "status": "success",
+    "rows": 100,
+    "sample": {
+      "id": "STU-001"
+    },
+    "schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 100,
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "unique": true,
+          "aliases": [
+            "id",
+            "studentid",
+            "student_id",
+            "sid"
+          ],
+          "output_name": "id",
+          "choices": [
+            "Stu-001"
+          ],
+          "pattern_sample": "STU-001"
+        }
+      ]
+    }
+  },
+  {
+    "prompt": "Create 50 records where roll_number follows the R-2024-### pattern",
+    "status": "success",
+    "rows": 50,
+    "sample": {
+      "roll_number": "R-2024-001"
+    },
+    "schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 50,
+      "columns": [
+        {
+          "name": "roll_number",
+          "type": "pattern",
+          "unique": true,
+          "pattern": "R001",
+          "aliases": [
+            "roll",
+            "rollnumber",
+            "roll_number",
+            "rollno",
+            "roll_no",
+            "roll number"
+          ],
+          "output_name": "roll_number",
+          "pattern_sample": "R-2024-###"
+        }
+      ]
+    }
+  },
+  {
+    "prompt": "Generate 20 employees. Their staff_id should be formatted like EMP_1001",
+    "status": "success",
+    "rows": 20,
+    "sample": {
+      "staff_id": "EMP_1001"
+    },
+    "schema": {
+      "intent": "generate_tabular_data",
+      "domain": "employee",
+      "distribution": "uniform",
+      "rows": 20,
+      "columns": [
+        {
+          "name": "id",
+          "type": "pattern",
+          "unique": true,
+          "pattern": "EMP-1001",
+          "aliases": [
+            "id",
+            "employeeid",
+            "employee_id",
+            "staffid",
+            "staff_id",
+            "staff_no",
+            "staff_number"
+          ],
+          "output_name": "staff_id",
+          "pattern_sample": "EMP_1001"
+        }
+      ]
+    }
+  },
+  {
+    "prompt": "10 students: name starts with 'Dr.', email ends with '@edu.in', and age is between 20 to 25",
+    "status": "success",
+    "rows": 10,
+    "sample": {
+      "name": "Dr Chaman Mand",
+      "email": "raonihal@edu.in",
+      "age": "between 20 to 25"
+    },
+    "schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 10,
+      "columns": [
+        {
+          "name": "name",
+          "type": "name",
+          "aliases": [
+            "name",
+            "fullname",
+            "full_name",
+            "studentname",
+            "student_name"
+          ],
+          "output_name": "name",
+          "prefix": "Dr"
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "unique": true,
+          "aliases": [
+            "email",
+            "mail",
+            "emailid",
+            "email_id",
+            "emailaddress"
+          ],
+          "output_name": "email",
+          "suffix": "@edu.in"
+        },
+        {
+          "name": "age",
+          "type": "integer",
+          "min": 20,
+          "max": 25,
+          "aliases": [
+            "age"
+          ],
+          "output_name": "age",
+          "choices": [
+            "between 20 to 25"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "prompt": "Give me 30 students where department is either 'CS' or 'IT', and marks are above 80",
+    "status": "success",
+    "rows": 30,
+    "sample": {
+      "department": "IT",
+      "marks": 82
+    },
+    "schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 30,
+      "columns": [
+        {
+          "name": "department",
+          "type": "choice",
+          "choices": [
+            "CS",
+            "IT"
+          ],
+          "aliases": [
+            "department",
+            "dept",
+            "dep"
+          ],
+          "output_name": "department"
+        },
+        {
+          "name": "marks",
+          "type": "integer",
+          "min": 80,
+          "max": 100,
+          "aliases": [
+            "marks",
+            "score",
+            "totalmarks",
+            "total_marks",
+            "obtainedmarks",
+            "math_score",
+            "science_score",
+            "math score",
+            "science score"
+          ],
+          "output_name": "marks"
+        }
+      ]
+    }
+  },
+  {
+    "prompt": "Generate 15 employees with salary between 50k and 150k, and department is set to 'Engineering'",
+    "status": "success",
+    "rows": 15,
+    "sample": {
+      "department": "Legal"
+    },
+    "schema": {
+      "intent": "generate_tabular_data",
+      "domain": "employee",
+      "distribution": "uniform",
+      "rows": 15,
+      "columns": [
+        {
+          "name": "department",
+          "type": "choice",
+          "choices": [
+            "Engineering",
+            "Sales",
+            "Marketing",
+            "HR",
+            "Finance",
+            "Legal",
+            "Operations",
+            "Product"
+          ],
+          "aliases": [
+            "department",
+            "dept",
+            "team"
+          ],
+          "output_name": "department"
+        }
+      ]
+    }
+  },
+  {
+    "prompt": "Generate 200 records: attendance is normally distributed with a minimum of 60",
+    "status": "success",
+    "rows": 200,
+    "sample": {
+      "attendance": 79.47
+    },
+    "schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 200,
+      "columns": [
+        {
+          "name": "attendance",
+          "type": "float",
+          "min": 60,
+          "max": 100.0,
+          "aliases": [
+            "attendance",
+            "attendancepercent",
+            "attendance_percentage",
+            "attendancepercentage",
+            "attendance_percent"
+          ],
+          "output_name": "attendance",
+          "distribution": "normal"
+        }
+      ]
+    }
+  },
+  {
+    "prompt": "I need a dataset of 25 pupils. Make sure their blood group is one of A+, B+, or O+. Also, unique email IDs",
+    "status": "success",
+    "rows": 25,
+    "sample": {
+      "email": "nicholas22@example.org",
+      "ids": "47e2bac4-c7ab-4d94-bdb1-ffbbb521bb85"
+    },
+    "schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 25,
+      "columns": [
+        {
+          "name": "email",
+          "type": "email",
+          "unique": true,
+          "aliases": [
+            "email",
+            "mail",
+            "emailid",
+            "email_id",
+            "emailaddress"
+          ],
+          "output_name": "email"
+        },
+        {
+          "name": "id",
+          "type": "uuid",
+          "unique": true,
+          "aliases": [
+            "id",
+            "studentid",
+            "student_id",
+            "sid"
+          ],
+          "output_name": "ids"
+        }
+      ]
+    }
+  },
+  {
+    "prompt": "30 students: graduation_year is 2025. fees greater than 100k. Scholarship is below fees",
+    "status": "success",
+    "rows": 30,
+    "sample": {
+      "graduation_year": 2025,
+      "scholarship": 430000
+    },
+    "schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 30,
+      "columns": [
+        {
+          "name": "graduation_year",
+          "type": "integer",
+          "min": 2025,
+          "max": 2025,
+          "aliases": [
+            "graduationyear",
+            "graduation_year",
+            "passingyear",
+            "passing_year",
+            "passoutyear",
+            "passout_year",
+            "yearofgraduation",
+            "year_of_graduation"
+          ],
+          "output_name": "graduation_year"
+        },
+        {
+          "name": "scholarship",
+          "type": "integer",
+          "min": 0,
+          "max": 500000,
+          "aliases": [
+            "scholarship",
+            "scholarshipamount",
+            "scholarship_amount"
+          ],
+          "output_name": "scholarship"
+        }
+      ]
+    }
+  },
+  {
+    "prompt": "Generate 50 students. ID format STU-2024-001. Name starts with 'A' or 'S'. Email suffix is @university.edu. Department is among CS, AI, or Data Science. Age 18-22. Marks follow normal distribution between 40 and 100. Graduation year set to 2026. Unique roll_number and phone",
+    "status": "success",
+    "rows": 50,
+    "sample": {
+      "id": "STU-2024-001",
+      "name": "Aishani Chacko",
+      "email": "seshadrisara@example.netis @university.edu",
+      "department": "AI",
+      "age": 21,
+      "marks": 40,
+      "year": 2026,
+      "roll_number": "R001",
+      "phone": "8881345354"
+    },
+    "schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "normal",
+      "rows": 50,
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "unique": true,
+          "aliases": [
+            "id",
+            "studentid",
+            "student_id",
+            "sid"
+          ],
+          "output_name": "id",
+          "pattern_sample": "STU-2024-001"
+        },
+        {
+          "name": "name",
+          "type": "name",
+          "aliases": [
+            "name",
+            "fullname",
+            "full_name",
+            "studentname",
+            "student_name"
+          ],
+          "output_name": "name",
+          "choices": [
+            "A",
+            "S"
+          ],
+          "prefix": [
+            "A",
+            "S"
+          ]
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "unique": true,
+          "aliases": [
+            "email",
+            "mail",
+            "emailid",
+            "email_id",
+            "emailaddress"
+          ],
+          "output_name": "email",
+          "choices": [
+            "@university.edu"
+          ],
+          "suffix": "is @university.edu"
+        },
+        {
+          "name": "department",
+          "type": "choice",
+          "choices": [
+            "CS",
+            "AI",
+            "Data science",
+            "among cs"
+          ],
+          "aliases": [
+            "department",
+            "dept",
+            "dep"
+          ],
+          "output_name": "department"
+        },
+        {
+          "name": "age",
+          "type": "integer",
+          "min": 18,
+          "max": 22,
+          "aliases": [
+            "age"
+          ],
+          "output_name": "age"
+        },
+        {
+          "name": "marks",
+          "type": "integer",
+          "min": 40,
+          "max": 100,
+          "aliases": [
+            "marks",
+            "score",
+            "totalmarks",
+            "total_marks",
+            "obtainedmarks",
+            "math_score",
+            "science_score",
+            "math score",
+            "science score"
+          ],
+          "output_name": "marks"
+        },
+        {
+          "name": "enrollment_year",
+          "type": "integer",
+          "min": 2026,
+          "max": 2026,
+          "aliases": [
+            "enrollmentyear",
+            "enrollment_year",
+            "admissionyear",
+            "admission_year",
+            "joiningyear",
+            "joining_year",
+            "yearofadmission",
+            "year_of_admission",
+            "year",
+            "enrollment year",
+            "admission year"
+          ],
+          "output_name": "year"
+        },
+        {
+          "name": "roll_number",
+          "type": "pattern",
+          "unique": true,
+          "pattern": "R001",
+          "aliases": [
+            "roll",
+            "rollnumber",
+            "roll_number",
+            "rollno",
+            "roll_no",
+            "roll number"
+          ],
+          "output_name": "roll_number"
+        },
+        {
+          "name": "phone",
+          "type": "phone",
+          "aliases": [
+            "phone",
+            "mobile",
+            "phonenumber",
+            "phone_number",
+            "phone number",
+            "mobilenumber",
+            "mobile_number",
+            "contact",
+            "contactnumber"
+          ],
+          "output_name": "phone"
+        }
+      ]
+    }
+  }
+]

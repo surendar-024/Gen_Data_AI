@@ -1,0 +1,486 @@
+[
+  {
+    "id": "Multiple Name Constraints",
+    "prompt": "Generate 20 students where name starts with 'A', ends with 'Kumar', and has length between 15 and 25",
+    "segments": [
+      "name starts with 'A', ends with 'Kumar', and has length between 15 and 25"
+    ],
+    "result_schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 20,
+      "columns": [
+        {
+          "name": "name",
+          "type": "name",
+          "output_name": "name",
+          "prefix": "A",
+          "suffix": "Kumar"
+        }
+      ]
+    }
+  },
+  {
+    "id": "Embedded Story Prompt",
+    "prompt": "I am writing a story about 30 brilliant students. Can you generate their data? They should have GPA follow normal distribution above 9.0, their email must start with 'stu_', and enrollment_year = 2024. Also, make sure their city is among Cambridge, Boston, or Somerville.",
+    "segments": [
+      "I am writing a story about 30 brilliant students",
+      "Can you generate their data? They should have GPA follow normal distribution above 9.0",
+      "their email must start with 'stu_'",
+      "enrollment_year = 2024",
+      "Also",
+      "make sure their city is among Cambridge, Boston, or Somerville."
+    ],
+    "result_schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "normal",
+      "rows": 30,
+      "columns": [
+        {
+          "name": "gpa",
+          "type": "float",
+          "min": 9,
+          "max": 10.0,
+          "output_name": "gpa"
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "unique": true,
+          "output_name": "email",
+          "prefix": "stu_"
+        },
+        {
+          "name": "enrollment_year",
+          "type": "integer",
+          "min": 2024,
+          "max": 2024,
+          "output_name": "enrollment_year"
+        },
+        {
+          "name": "city",
+          "type": "city",
+          "output_name": "city",
+          "choices": [
+            "Cambridge",
+            "Boston",
+            "Somerville"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "Cross-Field Dependency",
+    "prompt": "40 students where fees is between 100k and 200k, and scholarship smaller than fees",
+    "segments": [
+      "fees is between 100k and 200k",
+      "scholarship smaller than fees"
+    ],
+    "result_schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 40,
+      "columns": [
+        {
+          "name": "fees",
+          "type": "integer",
+          "min": 100000,
+          "max": 200000,
+          "output_name": "fees"
+        },
+        {
+          "name": "scholarship",
+          "type": "integer",
+          "min": 0,
+          "max": 500000,
+          "output_name": "scholarship",
+          "dynamic_max": "fees"
+        }
+      ]
+    }
+  },
+  {
+    "id": "Categorical & Patterns Mix",
+    "prompt": "30 students: status Graduated or Suspended, roll_number like GRAD-###-2024, and graduation_year is 2024",
+    "segments": [
+      "status Graduated or Suspended",
+      "roll_number like GRAD-###-2024",
+      "graduation_year is 2024"
+    ],
+    "result_schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 30,
+      "columns": [
+        {
+          "name": "status",
+          "type": "choice",
+          "choices": [
+            "Graduated",
+            "Suspended"
+          ],
+          "output_name": "status"
+        },
+        {
+          "name": "roll_number",
+          "type": "pattern",
+          "unique": true,
+          "pattern": "R001",
+          "output_name": "roll_number",
+          "pattern_sample": "GRAD-###-2024"
+        },
+        {
+          "name": "graduation_year",
+          "type": "integer",
+          "min": 2019,
+          "max": 2030,
+          "output_name": "graduation_year"
+        }
+      ]
+    }
+  },
+  {
+    "id": "Contradictory Logic",
+    "prompt": "Generate 10 students: age is 20, but age is 30, and age should be 25",
+    "segments": [
+      "age is 20,",
+      "age is 30",
+      "age should be 25"
+    ],
+    "result_schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 10,
+      "columns": [
+        {
+          "name": "age",
+          "type": "integer",
+          "min": 5,
+          "max": 25,
+          "output_name": "age"
+        }
+      ]
+    }
+  },
+  {
+    "id": "Heavy Segmentation",
+    "prompt": "10 students | name ends with 'Devi' | GPA 8.5 | marks follow uniform distribution | scholarship 50k | city lists Delhi, Mumbai | phone 10 characters | unique email ",
+    "segments": [
+      "10 students",
+      "name ends with 'Devi'",
+      "GPA 8.5",
+      "marks follow uniform distribution",
+      "scholarship 50k",
+      "city lists Delhi, Mumbai",
+      "phone 10 characters",
+      "unique email"
+    ],
+    "result_schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 10,
+      "columns": [
+        {
+          "name": "name",
+          "type": "name",
+          "output_name": "name",
+          "suffix": "Devi"
+        },
+        {
+          "name": "gpa",
+          "type": "float",
+          "min": 0.0,
+          "max": 10.0,
+          "output_name": "gpa"
+        },
+        {
+          "name": "marks",
+          "type": "integer",
+          "min": 0,
+          "max": 100,
+          "output_name": "marks",
+          "distribution": "uniform"
+        },
+        {
+          "name": "scholarship",
+          "type": "integer",
+          "min": 0,
+          "max": 500000,
+          "output_name": "scholarship"
+        },
+        {
+          "name": "city",
+          "type": "city",
+          "output_name": "city",
+          "choices": [
+            "Delhi",
+            "Mumbai"
+          ]
+        },
+        {
+          "name": "phone",
+          "type": "phone",
+          "output_name": "phone",
+          "length": 10
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "unique": true,
+          "output_name": "email"
+        }
+      ]
+    }
+  },
+  {
+    "id": "Identity Crisis",
+    "prompt": "Generate 50 students. Their names must start with 'Prof.' or 'Dr.', end with 'PhD', and be between 15 and 30 characters long. Also, they must have a unique roll_number that follows the pattern 'EMP-####-EDU' and their email should start with 'admin_'.",
+    "segments": [
+      "Generate 50 students",
+      "Their names must start with 'Prof.' or 'Dr.', end with 'PhD', and be between 15 and 30 characters long",
+      "Also, they must have a unique roll_number that follows the pattern 'EMP-####-EDU'",
+      "their email should start with 'admin_'."
+    ],
+    "result_schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 50,
+      "columns": [
+        {
+          "name": "name",
+          "type": "name",
+          "output_name": "names",
+          "choices": [
+            "Prof",
+            "DR"
+          ],
+          "prefix": [
+            "Prof",
+            "Dr"
+          ],
+          "suffix": "PhD"
+        },
+        {
+          "name": "roll_number",
+          "type": "pattern",
+          "unique": true,
+          "pattern": "R001",
+          "output_name": "roll_number",
+          "pattern_sample": "EMP-####-EDU"
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "unique": true,
+          "output_name": "email",
+          "prefix": "admin_"
+        }
+      ]
+    }
+  },
+  {
+    "id": "Financial Audit",
+    "prompt": "I need a table of 100 students where fees is between 10k and 50k, but their scholarship must be a multiple of 5000 and always be smaller than their fees. Also, roughly some of their addresses should be null.",
+    "segments": [
+      "fees is between 10k and 50k,",
+      "their scholarship must be a multiple of 5000 and always be smaller than their fees",
+      "Also, roughly some of their addresses should be null."
+    ],
+    "result_schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 100,
+      "columns": [
+        {
+          "name": "fees",
+          "type": "integer",
+          "min": 10000,
+          "max": 50000,
+          "output_name": "fees"
+        },
+        {
+          "name": "scholarship",
+          "type": "integer",
+          "min": 0,
+          "max": 500000,
+          "output_name": "scholarship",
+          "multiple_of": 5000,
+          "dynamic_max": "fees"
+        },
+        {
+          "name": "address",
+          "type": "address",
+          "nullable": true,
+          "output_name": "addresses",
+          "null_chance": 0.2
+        }
+      ]
+    }
+  },
+  {
+    "id": "Mixed Signals",
+    "prompt": "Create 30 records: age is 20, but age is 30, and actually age should be 25. Marks follow a normal distribution for math_score but marks follow a uniform distribution for science_score. Graduation year is among 2023, 2024, or 2025.",
+    "segments": [
+      "age is 20,",
+      "age is 30, and",
+      "age should be 25",
+      "Marks follow a normal distribution for math_score",
+      "marks follow a uniform distribution for science_score",
+      "Graduation year is among 2023, 2024, or 2025."
+    ],
+    "result_schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "normal",
+      "rows": 30,
+      "columns": [
+        {
+          "name": "age",
+          "type": "integer",
+          "min": 5,
+          "max": 25,
+          "output_name": "age"
+        },
+        {
+          "name": "marks",
+          "type": "integer",
+          "min": 0,
+          "max": 100,
+          "output_name": "math_score"
+        },
+        {
+          "name": "marks",
+          "type": "integer",
+          "min": 0,
+          "max": 100,
+          "output_name": "marks"
+        },
+        {
+          "name": "marks",
+          "type": "integer",
+          "min": 0,
+          "max": 100,
+          "output_name": "science_score",
+          "distribution": "uniform"
+        },
+        {
+          "name": "enrollment_year",
+          "type": "integer",
+          "min": 2015,
+          "max": 2026,
+          "output_name": "year",
+          "choices": [
+            2023,
+            2024,
+            2025
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "Storyteller 2.0",
+    "prompt": "I am writing a novel about 40 brilliant students in India. Can you help me generate their data? Make sure their city lists Delhi, Mumbai, Bangalore, or Chennai. They should have a GPA higher than 9.0 and their enrollment_year must be 2024. Also, for their status, it should be either 'Active' or 'On Leave'.",
+    "segments": [
+      "I am writing a novel about 40 brilliant students in India",
+      "Can you help me generate their data? Make sure their city lists Delhi, Mumbai, Bangalore, or Chennai",
+      "They should have a GPA higher than 9.0",
+      "their enrollment_year must be 2024",
+      "Also",
+      "for their status, it should be either 'Active' or 'On Leave'."
+    ],
+    "result_schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 40,
+      "columns": [
+        {
+          "name": "city",
+          "type": "city",
+          "output_name": "city",
+          "choices": [
+            "Delhi",
+            "Mumbai",
+            "Bangalore",
+            "Chennai",
+            "Make sure their city lists delhi"
+          ]
+        },
+        {
+          "name": "gpa",
+          "type": "float",
+          "min": 9,
+          "max": 10.0,
+          "output_name": "gpa"
+        },
+        {
+          "name": "enrollment_year",
+          "type": "integer",
+          "min": 2015,
+          "max": 2026,
+          "output_name": "enrollment_year"
+        },
+        {
+          "name": "status",
+          "type": "choice",
+          "choices": [
+            "Active",
+            "Graduated",
+            "Dropped",
+            "Suspended",
+            "On Leave"
+          ],
+          "output_name": "status"
+        }
+      ]
+    }
+  },
+  {
+    "id": "Numeric Stressor",
+    "prompt": "Generate 10k rows for students. Their attendance is between 60% and 100% and should be a multiple of 5. All of their middle_name must be null, and their phone number must be exactly 10 characters.",
+    "segments": [
+      "Generate 10k rows for students",
+      "Their attendance is between 60% and 100% and should be a multiple of 5",
+      "All of their middle_name must be null",
+      "their phone number must be exactly 10 characters."
+    ],
+    "result_schema": {
+      "intent": "generate_tabular_data",
+      "domain": "student",
+      "distribution": "uniform",
+      "rows": 10000,
+      "columns": [
+        {
+          "name": "attendance",
+          "type": "float",
+          "min": 60,
+          "max": 100,
+          "output_name": "attendance",
+          "multiple_of": 5
+        },
+        {
+          "name": "middle_name",
+          "type": "first_name",
+          "nullable": true,
+          "output_name": "middle_name",
+          "null_chance": 1.0
+        },
+        {
+          "name": "phone",
+          "type": "phone",
+          "output_name": "phone number"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,159 @@
+[
+  {
+    "id": "Simple Prompt",
+    "status": "clarification",
+    "message": "The columns ['generate 5 students'] do not belong to the 'student' domain."
+  },
+  {
+    "id": "Specific Columns",
+    "status": "success",
+    "rows_requested": 10,
+    "columns_resolved": [
+      "name",
+      "email",
+      "age",
+      "marks"
+    ],
+    "sample_row": {
+      "name": "Suhani Boase",
+      "email": "kashishkamdar@example.com",
+      "age": 17,
+      "marks": 34
+    }
+  },
+  {
+    "id": "Categorical Constraints",
+    "status": "success",
+    "rows_requested": 20,
+    "columns_resolved": [
+      "gender",
+      "department",
+      "status"
+    ],
+    "sample_row": {
+      "gender": "Male",
+      "department": "CS",
+      "status": "active"
+    }
+  },
+  {
+    "id": "Numeric Ranges",
+    "status": "success",
+    "rows_requested": 15,
+    "columns_resolved": [
+      "age",
+      "marks"
+    ],
+    "sample_row": {
+      "age": 21,
+      "marks": 88
+    }
+  },
+  {
+    "id": "Prefix/Suffix Constraints",
+    "status": "success",
+    "rows_requested": 10,
+    "columns_resolved": [
+      "email",
+      "name"
+    ],
+    "sample_row": {
+      "email": "munshiadya@edu.in",
+      "name": "MR"
+    }
+  },
+  {
+    "id": "Sequential Patterns",
+    "status": "success",
+    "rows_requested": 50,
+    "columns_resolved": [
+      "id",
+      "roll_number"
+    ],
+    "sample_row": {
+      "id": "STU-001",
+      "roll_number": "R-2024-###"
+    }
+  },
+  {
+    "id": "Uniqueness & Nullability",
+    "status": "success",
+    "rows_requested": 25,
+    "columns_resolved": [
+      "roll_number",
+      "email",
+      "middle_name",
+      "address"
+    ],
+    "sample_row": {
+      "roll_number": "R001",
+      "email": "jonathan99@example.org",
+      "middle_name": null,
+      "addresses": "null"
+    }
+  },
+  {
+    "id": "Distribution Logic",
+    "status": "success",
+    "rows_requested": 100,
+    "columns_resolved": [
+      "marks",
+      "gpa"
+    ],
+    "sample_row": {
+      "marks": 31,
+      "gpa": 7.77
+    }
+  },
+  {
+    "id": "Cross-Column Dependencies",
+    "status": "success",
+    "rows_requested": 30,
+    "columns_resolved": [
+      "scholarship",
+      "graduation_year"
+    ],
+    "sample_row": {
+      "scholarship": "below fees",
+      "graduation_year": "higher than enrollment_year"
+    }
+  },
+  {
+    "id": "Natural Language Variation",
+    "status": "success",
+    "rows_requested": 20,
+    "columns_resolved": [
+      "name"
+    ],
+    "sample_row": {
+      "names": "Harshil Balay"
+    }
+  },
+  {
+    "id": "Complex Multi-Constraint",
+    "status": "success",
+    "rows_requested": 50,
+    "columns_resolved": [
+      "id",
+      "name",
+      "email",
+      "department",
+      "age",
+      "gender",
+      "marks",
+      "graduation_year",
+      "phone"
+    ],
+    "sample_row": {
+      "id": "STU-2024-001",
+      "full_name": "Gauri Deol",
+      "email": "sanghviaradhana@university.ac.in",
+      "department": "Csbs",
+      "age": 19,
+      "gender": "m or f",
+      "marks": 37,
+      "graduation_year": 2026,
+      "phone number": "8432509066"
+    }
+  }
+]

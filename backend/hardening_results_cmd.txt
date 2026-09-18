@@ -1,0 +1,30 @@
+
+--- TEST: Give me 100 students with scholarship higher than 50k and smaller than 100 thousand ---
+Entities Extracted: {'domain': 'student', 'columns': ['scholarship higher than 50k and smaller than 100 thousand']}
+Domain Extracted: student
+Final Schema Columns: ['scholarship']
+  - Col scholarship constraints: {'min': 50000, 'max': 100000}
+
+--- TEST: Generate 50 students where fees is higher than 2 lakh ---
+Entities Extracted: {'domain': 'student', 'columns': ['fees is higher than 2 lakh']}
+Domain Extracted: student
+Final Schema Columns: ['fees']
+  - Col fees constraints: {'min': 200000, 'max': 500000}
+
+--- TEST: fees in between of 10k to 50k ---
+Entities Extracted: {'domain': 'student', 'columns': ['fees in between of 10k to 50k']}
+Domain Extracted: student
+Final Schema Columns: ['fees']
+  - Col fees constraints: {'min': 10000, 'max': 50000}
+
+--- TEST: scholarship larger than 1.5 million ---
+Entities Extracted: {'domain': 'student', 'columns': ['scholarship larger than 1.5 million']}
+Domain Extracted: student
+Final Schema Columns: ['scholarship']
+  - Col scholarship constraints: {'min': 1500000, 'max': 500000}
+
+--- TEST: scholarship multiple of 5k and lower than 50 thousand ---
+Entities Extracted: {'domain': 'student', 'columns': ['scholarship multiple of 5k and lower than 50 thousand']}
+Domain Extracted: student
+Final Schema Columns: ['scholarship']
+  - Col scholarship constraints: {'min': 0, 'max': 50000, 'multiple_of': 5}

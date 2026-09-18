@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pydantic
+sentence-transformers
+spacy
+faker
+numpy
+motor
+pymongo
+python-dotenv
+httpx
